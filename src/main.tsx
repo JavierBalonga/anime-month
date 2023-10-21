@@ -5,17 +5,28 @@ import "./index.css";
 import { ThemeProvider } from "./components/theme-provider.tsx";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { TooltipProvider } from "./components/ui/tooltip.tsx";
+import { HashRouter as Router } from "react-router-dom";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false,
+      refetchOnWindowFocus: false,
+      keepPreviousData: true,
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <TooltipProvider>
-          <App />
-        </TooltipProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <Router>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
+          <TooltipProvider>
+            <App />
+          </TooltipProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </Router>
   </React.StrictMode>
 );

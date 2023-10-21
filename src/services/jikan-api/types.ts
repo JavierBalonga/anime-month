@@ -4,19 +4,8 @@ export interface GetAinmesOptions {
   status?: AnimeStatus;
   page?: number;
   limit?: number;
-  order_by?:
-    | "mal_id"
-    | "title"
-    | "start_date"
-    | "end_date"
-    | "episodes"
-    | "score"
-    | "scored_by"
-    | "rank"
-    | "popularity"
-    | "members"
-    | "favorites";
-  sort?: "desc" | "asc";
+  order_by?: AnimeOrderBy;
+  sort?: OrderDirection;
 }
 
 export interface GetAnimesResponse {
@@ -200,6 +189,25 @@ export interface Genre {
   name: string;
   url: string;
   count: number;
+}
+
+export enum AnimeOrderBy {
+  mal_id = "mal_id",
+  title = "title",
+  start_date = "start_date",
+  end_date = "end_date",
+  episodes = "episodes",
+  score = "score",
+  scored_by = "scored_by",
+  rank = "rank",
+  popularity = "popularity",
+  members = "members",
+  favorites = "favorites",
+}
+
+export enum OrderDirection {
+  desc = "desc",
+  asc = "asc",
 }
 
 export interface JikanError {

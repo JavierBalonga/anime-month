@@ -37,8 +37,6 @@ export function GenresCombobox({
   const animeGenres = useQuery({
     queryKey: ["/genres/anime"],
     queryFn: () => getAnimeGenres(),
-    retry: false,
-    keepPreviousData: true,
   });
 
   return (
@@ -65,9 +63,10 @@ export function GenresCombobox({
             {animeGenres.data?.data.map((genre) => (
               <CommandItem
                 key={genre.mal_id}
-                value={String(genre.mal_id)}
+                value={`${genre.mal_id}-${genre.name}`}
                 onSelect={(currentValue) => {
-                  const number = Number(currentValue);
+                  const [mal_id] = currentValue.split("-");
+                  const number = Number(mal_id);
                   const newValue = number === value ? "" : number || "";
                   setValue(newValue);
                   onChange?.(newValue);
