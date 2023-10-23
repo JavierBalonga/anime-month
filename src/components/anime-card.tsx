@@ -27,7 +27,7 @@ export default function AnimeCard({ loading, anime }: AnimeCardProps) {
       ) : (
         <Tooltip>
           <TooltipTrigger asChild>
-            <h4 className="truncate whitespace-nowrap text-center text-lg tracking-tight">
+            <h4 className="line-clamp-2 text-center text-lg font-medium tracking-tight">
               {anime.title}
             </h4>
           </TooltipTrigger>
