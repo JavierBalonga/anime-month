@@ -1,6 +1,7 @@
 import { MoonIcon, SunIcon } from 'lucide-react';
 import { Outlet } from 'react-router-dom';
 
+import Background from './background';
 import { useTheme } from './theme-provider';
 import { Button } from './ui/button';
 
@@ -47,6 +48,7 @@ export default function Layout() {
         </Button>
       </header>
       <Outlet />
+      <Background />
     </>
   );
 }

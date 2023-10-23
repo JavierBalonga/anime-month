@@ -11,14 +11,14 @@ export default function AnimeCard({ loading, anime }: AnimeCardProps) {
   return (
     <div className="flex flex-col gap-2">
       {loading || !anime ? (
-        <div className="h-[225px] w-full animate-pulse rounded-sm bg-gray-300"></div>
+        <div className="aspect-[3/4] w-full animate-pulse rounded-sm bg-gray-300"></div>
       ) : (
         <img
           src={anime.images.jpg.image_url}
           alt={anime.title}
-          width={150}
-          height={225}
-          className="h-[225px] w-full rounded-sm object-cover"
+          width={500}
+          height={670}
+          className="aspect-[3/4] w-full rounded-sm object-cover"
         />
       )}
 
