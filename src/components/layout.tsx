@@ -10,7 +10,7 @@ export default function Layout() {
   return (
     <>
       <header className="flex-rowitems-center flex w-full max-w-5xl justify-between py-2">
-        <h1>Anime Month</h1>
+        <h1 className="text-2xl font-extrabold">Anime Month</h1>
         <Button
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           size="icon"
@@ -22,7 +22,7 @@ export default function Layout() {
             style={
               theme === 'dark'
                 ? {
-                    transform: `translate(-50%, -50%) rotate(30deg)`,
+                    transform: `translate(-50%, -50%) rotate(-180deg)`,
                     opacity: 0,
                   }
                 : {
@@ -36,7 +36,7 @@ export default function Layout() {
             style={
               theme === 'light'
                 ? {
-                    transform: `translate(-50%, -50%) rotate(30deg)`,
+                    transform: `translate(-50%, -50%) rotate(180deg)`,
                     opacity: 0,
                   }
                 : {
