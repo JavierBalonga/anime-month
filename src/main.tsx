@@ -1,11 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import "./index.css";
-import { ThemeProvider } from "./components/theme-provider.tsx";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { TooltipProvider } from "./components/ui/tooltip.tsx";
-import { HashRouter as Router } from "react-router-dom";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+
+import App from './App.tsx';
+
+import './index.css';
+
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { HashRouter as Router } from 'react-router-dom';
+
+import { ThemeProvider } from './components/theme-provider.tsx';
+import { TooltipProvider } from './components/ui/tooltip.tsx';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -17,7 +21,7 @@ const queryClient = new QueryClient({
   },
 });
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Router>
       <QueryClientProvider client={queryClient}>
@@ -28,5 +32,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </ThemeProvider>
       </QueryClientProvider>
     </Router>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

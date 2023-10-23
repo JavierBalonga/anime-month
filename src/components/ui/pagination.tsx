@@ -1,4 +1,4 @@
-import { Button } from "./button";
+import { Button } from './button';
 
 export interface PaginationProps {
   page?: number;
@@ -6,26 +6,20 @@ export interface PaginationProps {
   onChange?: (page: number) => void;
 }
 
-const Pagination = ({
-  page = 1,
-  totalPages = 1,
-  onChange,
-}: PaginationProps) => {
+const Pagination = ({ page = 1, totalPages = 1, onChange }: PaginationProps) => {
   return (
-    <div className="overflow-hidden relative h-10">
+    <div className="relative h-10 overflow-hidden">
       {Array.from({ length: totalPages }, (_, i) => {
         const number = i + 1;
         const diff = number - page;
         return (
           <Button
             key={number}
-            variant={page === number ? "destructive" : "default"}
+            variant={page === number ? 'destructive' : 'default'}
             onClick={() => page !== number && onChange?.(number)}
-            className="w-10 absolute left-1/2 transition-transform"
+            className="absolute left-1/2 w-10 transition-transform"
             style={{
-              transform: `translateX(calc(${diff * 100 - 50}% + ${
-                diff * 8
-              }px))`,
+              transform: `translateX(calc(${diff * 100 - 50}% + ${diff * 8}px))`,
             }}
           >
             {number}
@@ -35,6 +29,6 @@ const Pagination = ({
     </div>
   );
 };
-Pagination.displayName = "Pagination";
+Pagination.displayName = 'Pagination';
 
 export { Pagination };

@@ -5,8 +5,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { AnimeOrderBy } from "../services/jikan-api/types";
+} from '@/components/ui/select';
+
+import { AnimeOrderBy } from '../services/jikan-api/types';
 
 export interface AnimeOrderSelectProps {
   value?: AnimeOrderBy;
@@ -15,7 +16,7 @@ export interface AnimeOrderSelectProps {
 
 export function AnimeOrderSelect({ value, onChange }: AnimeOrderSelectProps) {
   return (
-    <Select value={value || ""} onValueChange={onChange} required={false}>
+    <Select value={value || ''} onValueChange={onChange} required={false}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder="Order by" />
       </SelectTrigger>

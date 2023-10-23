@@ -1,41 +1,33 @@
-"use client";
+'use client';
 
-import * as React from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
-
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import * as React from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { useQuery } from "react-query";
-import { getAnimeGenres } from "@/services/jikan-api";
+} from '@/components/ui/command';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
+import { getAnimeGenres } from '@/services/jikan-api';
+import { Check, ChevronsUpDown } from 'lucide-react';
+import { useQuery } from 'react-query';
 
 export interface GenresComboboxProps {
-  value?: number | "";
-  onChange?: (value: number | "") => void;
+  value?: number | '';
+  onChange?: (value: number | '') => void;
 }
 
-export function GenresCombobox({
-  value: propsValue,
-  onChange,
-}: GenresComboboxProps) {
+export function GenresCombobox({ value: propsValue, onChange }: GenresComboboxProps) {
   const [open, setOpen] = React.useState(false);
-  const [localValue, setValue] = React.useState<number | "">("");
+  const [localValue, setValue] = React.useState<number | ''>('');
 
   const value = propsValue ?? localValue;
 
   const animeGenres = useQuery({
-    queryKey: ["/genres/anime"],
+    queryKey: ['/genres/anime'],
     queryFn: () => getAnimeGenres(),
   });
 
@@ -49,9 +41,8 @@ export function GenresCombobox({
           className="w-[200px] justify-between"
         >
           {value
-            ? animeGenres.data?.data.find((genre) => genre.mal_id === value)
-                ?.name
-            : "Select Genre"}
+            ? animeGenres.data?.data.find((genre) => genre.mal_id === value)?.name
+            : 'Select Genre'}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -65,9 +56,9 @@ export function GenresCombobox({
                 key={genre.mal_id}
                 value={`${genre.mal_id}-${genre.name}`}
                 onSelect={(currentValue) => {
-                  const [mal_id] = currentValue.split("-");
+                  const [mal_id] = currentValue.split('-');
                   const number = Number(mal_id);
-                  const newValue = number === value ? "" : number || "";
+                  const newValue = number === value ? '' : number || '';
                   setValue(newValue);
                   onChange?.(newValue);
                   setOpen(false);
@@ -75,8 +66,8 @@ export function GenresCombobox({
               >
                 <Check
                   className={cn(
-                    "mr-2 h-4 w-4",
-                    value === genre.mal_id ? "opacity-100" : "opacity-0"
+                    'mr-2 h-4 w-4',
+                    value === genre.mal_id ? 'opacity-100' : 'opacity-0',
                   )}
                 />
                 {genre.name}

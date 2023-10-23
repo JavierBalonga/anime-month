@@ -78,7 +78,7 @@ export interface Broadcast {
 }
 
 export enum Timezone {
-  AsiaTokyo = "Asia/Tokyo",
+  AsiaTokyo = 'Asia/Tokyo',
 }
 
 export interface Demographic {
@@ -89,7 +89,7 @@ export interface Demographic {
 }
 
 export enum DemographicType {
-  Anime = "anime",
+  Anime = 'anime',
 }
 
 export interface Image {
@@ -99,33 +99,33 @@ export interface Image {
 }
 
 export enum Rating {
-  PG13Teens13OrOlder = "PG-13 - Teens 13 or older",
-  PGChildren = "PG - Children",
-  R17ViolenceProfanity = "R - 17+ (violence & profanity)",
-  RMildNudity = "R+ - Mild Nudity",
+  PG13Teens13OrOlder = 'PG-13 - Teens 13 or older',
+  PGChildren = 'PG - Children',
+  R17ViolenceProfanity = 'R - 17+ (violence & profanity)',
+  RMildNudity = 'R+ - Mild Nudity',
 }
 
 export enum Season {
-  Fall = "fall",
-  Spring = "spring",
-  Summer = "summer",
+  Fall = 'fall',
+  Spring = 'spring',
+  Summer = 'summer',
 }
 
 export enum Source {
-  LightNovel = "Light novel",
-  Manga = "Manga",
-  Original = "Original",
+  LightNovel = 'Light novel',
+  Manga = 'Manga',
+  Original = 'Original',
 }
 
 export enum Status {
-  CurrentlyAiring = "Currently Airing",
-  FinishedAiring = "Finished Airing",
+  CurrentlyAiring = 'Currently Airing',
+  FinishedAiring = 'Finished Airing',
 }
 
 export enum AnimeStatus {
-  airing = "airing",
-  complete = "complete",
-  upcoming = "upcoming",
+  airing = 'airing',
+  complete = 'complete',
+  upcoming = 'upcoming',
 }
 
 export interface Title {
@@ -134,13 +134,13 @@ export interface Title {
 }
 
 export enum TitleType {
-  Default = "Default",
-  English = "English",
-  French = "French",
-  German = "German",
-  Japanese = "Japanese",
-  Spanish = "Spanish",
-  Synonym = "Synonym",
+  Default = 'Default',
+  English = 'English',
+  French = 'French',
+  German = 'German',
+  Japanese = 'Japanese',
+  Spanish = 'Spanish',
+  Synonym = 'Synonym',
 }
 
 export interface Trailer {
@@ -159,12 +159,12 @@ export interface Images {
 }
 
 export enum AnimeType {
-  Tv = "TV",
-  Movie = "Movie",
-  OVA = "OVA",
-  Special = "Special",
-  ONA = "ONA",
-  Music = "Music",
+  Tv = 'TV',
+  Movie = 'Movie',
+  OVA = 'OVA',
+  Special = 'Special',
+  ONA = 'ONA',
+  Music = 'Music',
 }
 
 export interface Pagination {
@@ -192,22 +192,22 @@ export interface Genre {
 }
 
 export enum AnimeOrderBy {
-  mal_id = "mal_id",
-  title = "title",
-  start_date = "start_date",
-  end_date = "end_date",
-  episodes = "episodes",
-  score = "score",
-  scored_by = "scored_by",
-  rank = "rank",
-  popularity = "popularity",
-  members = "members",
-  favorites = "favorites",
+  mal_id = 'mal_id',
+  title = 'title',
+  start_date = 'start_date',
+  end_date = 'end_date',
+  episodes = 'episodes',
+  score = 'score',
+  scored_by = 'scored_by',
+  rank = 'rank',
+  popularity = 'popularity',
+  members = 'members',
+  favorites = 'favorites',
 }
 
 export enum OrderDirection {
-  desc = "desc",
-  asc = "asc",
+  desc = 'desc',
+  asc = 'asc',
 }
 
 export interface JikanError {
