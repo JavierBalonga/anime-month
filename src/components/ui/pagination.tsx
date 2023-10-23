@@ -15,9 +15,10 @@ const Pagination = ({ page = 1, totalPages = 1, onChange }: PaginationProps) => 
         return (
           <Button
             key={number}
-            variant={page === number ? 'destructive' : 'default'}
+            size="icon"
+            variant={page === number ? 'default' : 'secondary'}
             onClick={() => page !== number && onChange?.(number)}
-            className="absolute left-1/2 w-10 transition-transform"
+            className="absolute left-1/2 transition-transform"
             style={{
               transform: `translateX(calc(${diff * 100 - 50}% + ${diff * 8}px))`,
             }}
