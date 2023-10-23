@@ -2,6 +2,7 @@ export default function Background() {
   return (
     <>
       {/* Light */}
+      <div className="absolute inset-0 -z-10 bg-[#E6E4D5] dark:hidden"></div>
       <div className="absolute inset-0 -z-10 mix-blend-overlay [background:_url(/noise.png)] dark:hidden"></div>
 
       {/* Dark */}
