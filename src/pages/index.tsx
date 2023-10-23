@@ -9,7 +9,6 @@ import { useQuery } from 'react-query';
 import { useSearchParams } from 'react-router-dom';
 
 import { AnimeOrderSelect } from '../components/anime-order-select';
-import ChevronUpIcon from '../components/icons/chevron-up';
 import { Alert, AlertDescription, AlertTitle } from '../components/ui/alert';
 import { Button } from '../components/ui/button';
 
