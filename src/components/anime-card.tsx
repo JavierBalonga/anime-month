@@ -39,7 +39,7 @@ export default function AnimeCard({ loading, anime }: AnimeCardProps) {
         <StarIcon fill={isFavorite ? 'currentColor' : 'none'} />
       </Button>
       {loading || !anime ? (
-        <div className="aspect-[3/4] w-full animate-pulse rounded-sm bg-gray-300"></div>
+        <div className="aspect-[3/4] w-full animate-pulse rounded-sm bg-neutral-500 dark:bg-neutral-300"></div>
       ) : (
         <img
           src={anime.images.jpg.image_url}
@@ -54,7 +54,7 @@ export default function AnimeCard({ loading, anime }: AnimeCardProps) {
       )}
 
       {loading || !anime ? (
-        <div className="h-4 w-full animate-pulse rounded-sm bg-gray-300"></div>
+        <div className="h-4 w-full animate-pulse rounded-sm bg-neutral-500 dark:bg-neutral-300"></div>
       ) : (
         <Tooltip>
           <TooltipTrigger asChild>
