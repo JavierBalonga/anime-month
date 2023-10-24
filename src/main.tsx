@@ -8,8 +8,8 @@ import './index.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { HashRouter as Router } from 'react-router-dom';
 
-import { ThemeProvider } from './components/theme-provider.tsx';
 import { TooltipProvider } from './components/ui/tooltip.tsx';
+import { ThemeProvider } from './contexts/theme-provider.tsx';
 
 const queryClient = new QueryClient({
   defaultOptions: {

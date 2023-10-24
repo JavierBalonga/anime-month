@@ -1,16 +1,30 @@
 import { MoonIcon, SunIcon } from 'lucide-react';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
+import { useTheme } from '../contexts/theme-provider';
 import Background from './background';
-import { useTheme } from './theme-provider';
 import { Button } from './ui/button';
 
 export default function Layout() {
   const { theme, setTheme } = useTheme();
   return (
     <>
-      <header className="flex-rowitems-center flex w-full max-w-5xl justify-between py-2">
+      <header className="flex-rowitems-center relative flex w-full max-w-5xl justify-between py-2">
         <h1 className="text-2xl font-extrabold">Anime Month</h1>
+        <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <ul className="flex flex-row gap-3">
+            <li>
+              <Button variant="link" asChild>
+                <Link to="/">Home</Link>
+              </Button>
+            </li>
+            <li>
+              <Button variant="link" asChild>
+                <Link to="/favorites">Favorites</Link>
+              </Button>
+            </li>
+          </ul>
+        </nav>
         <Button
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           size="icon"

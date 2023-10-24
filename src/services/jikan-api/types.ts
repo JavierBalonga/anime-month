@@ -1,4 +1,12 @@
-export interface GetAinmesOptions {
+export interface GetAnimeByIdOptions {
+  id: number;
+}
+
+export interface GetAnimeByIdResponse {
+  data: Anime;
+}
+
+export interface GetAnimesOptions {
   genres?: string;
   type?: AnimeType;
   status?: AnimeStatus;

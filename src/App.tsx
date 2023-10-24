@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Loading from './pages/loading';
 
 const HomePage = lazy(() => import('./pages'));
+const FavoritesPage = lazy(() => import('./pages/favorites'));
 
 export default function App() {
   return (
@@ -15,6 +16,14 @@ export default function App() {
           element={
             <Suspense fallback={<Loading />}>
               <HomePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <Suspense fallback={<Loading />}>
+              <FavoritesPage />
             </Suspense>
           }
         />
