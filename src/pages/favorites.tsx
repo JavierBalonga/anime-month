@@ -8,7 +8,7 @@ export default function FavoritesPage() {
     <div className="flex w-full max-w-5xl grow flex-col gap-2 py-10">
       <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-2">
-          <div className="grid grid-cols-[repeat(auto-fill,_minmax(170px,_1fr))] gap-14 py-14">
+          <div className="flex flex-col gap-8 py-14">
             {favorites?.map((id) => <FavoriteAnimeCard key={id} id={id} />)}
           </div>
         </div>

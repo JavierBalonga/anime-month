@@ -24,6 +24,7 @@ export function getAnimes(options: GetAnimesOptions): Promise<GetAnimesResponse>
   }
   return fetchJikanApi(url);
 }
+
 export function getAnimeById({ id }: GetAnimeByIdOptions): Promise<GetAnimeByIdResponse> {
   const url = new URL(`/v4/anime/${id}`, BASE_URL);
   return fetchJikanApi(url);
