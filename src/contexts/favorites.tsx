@@ -5,20 +5,22 @@ export interface Favorites {
   favorites: number[];
   addFavorite: (id: number) => void;
   removeFavorite: (id: number) => void;
+  setFavorites: (favorites: number[]) => void;
 }
 
 const useFavorites = create(
   persist<Favorites>(
     (set) => ({
       favorites: [],
-      addFavorite: (id) =>
-        set((state) => ({
-          favorites: state.favorites.concat(id),
-        })),
-      removeFavorite: (id) =>
-        set((state) => ({
-          favorites: state.favorites.filter((fav) => fav !== id),
-        })),
+      addFavorite: (id) => {
+        set((state) => ({ favorites: state.favorites.concat(id) }));
+      },
+      removeFavorite: (id) => {
+        set((state) => ({ favorites: state.favorites.filter((fav) => fav !== id) }));
+      },
+      setFavorites: (favorites) => {
+        set(() => ({ favorites }));
+      },
     }),
     { name: 'anime-favorites', version: 1 },
   ),
