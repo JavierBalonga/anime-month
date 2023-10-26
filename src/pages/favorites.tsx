@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import FavoriteAnimeCard from '../components/favorite-anime-card';
 import useFavorites from '../contexts/favorites';
