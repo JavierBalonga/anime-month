@@ -11,7 +11,7 @@ import { Status } from '../services/jikan-api/types';
 export default function DetailPage() {
   const { id } = useParams<{ id: string }>();
 
-  const { data, isLoading, error } = useQuery({
+  const { data, isLoading /* error */ } = useQuery({
     queryKey: ['/anime', id],
     queryFn: () => getAnimeById({ id: Number(id) }),
   });
