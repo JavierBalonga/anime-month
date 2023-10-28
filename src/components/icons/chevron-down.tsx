@@ -1,6 +1,8 @@
 import { SVGAttributes } from 'react';
 
-const ChevronDownIcon = (props: SVGAttributes<SVGSVGElement>) => {
+import { cn } from '../../lib/utils';
+
+const ChevronDownIcon = ({ className, ...props }: SVGAttributes<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +10,7 @@ const ChevronDownIcon = (props: SVGAttributes<SVGSVGElement>) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="h-6 w-6"
+      className={cn('h-6 w-6', className)}
       {...props}
     >
       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />

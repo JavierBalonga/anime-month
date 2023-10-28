@@ -1,5 +1,6 @@
 import { AlertCircle } from 'lucide-react';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
 
 import { getAnimeById } from '../services/jikan-api';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
@@ -75,9 +76,11 @@ export default function FavoriteAnimeCard({ id, onDragStart, onDragOver }: Favor
               ) : (
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <h4 className="line-clamp-1 text-xl font-medium tracking-tight lg:text-3xl">
-                      {data.data.title}
-                    </h4>
+                    <Link to={`/${id}`}>
+                      <h4 className="line-clamp-1 text-xl font-medium tracking-tight lg:text-3xl">
+                        {data.data.title}
+                      </h4>
+                    </Link>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>{data.data.title}</p>
@@ -87,10 +90,7 @@ export default function FavoriteAnimeCard({ id, onDragStart, onDragOver }: Favor
               <div className="flex flex-row flex-wrap items-center gap-2 lg:flex-nowrap">
                 {isLoading || !data?.data
                   ? Array.from({ length: 3 }, (_, i) => (
-                      <Badge
-                        key={i}
-                        className="animate-pulse bg-neutral-500 text-transparent dark:bg-neutral-300"
-                      >
+                      <Badge key={i} variant="loading">
                         XXX
                       </Badge>
                     ))

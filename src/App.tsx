@@ -6,6 +6,7 @@ import Loading from './pages/loading';
 
 const HomePage = lazy(() => import('./pages'));
 const FavoritesPage = lazy(() => import('./pages/favorites'));
+const DetailPage = lazy(() => import('./pages/detail'));
 
 export default function App() {
   return (
@@ -24,6 +25,14 @@ export default function App() {
           element={
             <Suspense fallback={<Loading />}>
               <FavoritesPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/:id"
+          element={
+            <Suspense fallback={<Loading />}>
+              <DetailPage />
             </Suspense>
           }
         />

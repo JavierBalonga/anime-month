@@ -1,6 +1,8 @@
 import { SVGAttributes } from 'react';
 
-const ChevronUpIcon = (props: SVGAttributes<SVGSVGElement>) => {
+import { cn } from '../../lib/utils';
+
+const ChevronUpIcon = ({ className, ...props }: SVGAttributes<SVGSVGElement>) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +10,7 @@ const ChevronUpIcon = (props: SVGAttributes<SVGSVGElement>) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="h-6 w-6"
+      className={cn('h-6 w-6', className)}
       {...props}
     >
       <svg>
