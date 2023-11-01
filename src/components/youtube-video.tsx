@@ -4,28 +4,19 @@ import { PlayIcon } from 'lucide-react';
 import { Button } from './ui/button';
 
 export interface YoutubeVideoProps {
+  loading?: boolean;
   previewUrl?: string | null;
   url?: string | null;
 }
 
-export default function YoutubeVideo({ previewUrl, url }: YoutubeVideoProps) {
-  if (!previewUrl || !url) return null;
-
+export default function YoutubeVideo({ loading, previewUrl, url }: YoutubeVideoProps) {
   const [play, setPlay] = useState(false);
 
   return (
     <div className="relative aspect-video h-full w-full overflow-hidden rounded-xl bg-background">
-      {play ? (
-        <iframe
-          src={url}
-          title="YouTube video player"
-          /* @ts-expect-error frameborder is not defined on props */
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          className="h-full w-full"
-        />
-      ) : (
+      {loading || !previewUrl || !url ? (
+        <div className="h-full w-full animate-pulse bg-neutral-500 dark:bg-neutral-300" />
+      ) : !play ? (
         <>
           <img
             src={previewUrl}
@@ -43,6 +34,16 @@ export default function YoutubeVideo({ previewUrl, url }: YoutubeVideoProps) {
             </Button>
           </div>
         </>
+      ) : (
+        <iframe
+          src={url}
+          title="YouTube video player"
+          /* @ts-expect-error frameborder is not defined on props */
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          className="h-full w-full"
+        />
       )}
     </div>
   );
