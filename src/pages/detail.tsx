@@ -40,23 +40,23 @@ export default function DetailPage() {
 
   return (
     <div className="flex w-full max-w-7xl grow flex-col gap-24 py-24">
-      <section className="flex flex-row items-stretch gap-8">
+      <section className="flex flex-col items-stretch gap-8 md:flex-row">
         <div className="aspect-[3/4] h-full flex-shrink-0 overflow-hidden rounded-sm">
           {isLoading || !data?.data ? (
-            <div className="h-full w-[300px] animate-pulse bg-neutral-500 dark:bg-neutral-300"></div>
+            <div className="h-full w-[150px] animate-pulse bg-neutral-500 dark:bg-neutral-300 lg:w-[300px]"></div>
           ) : (
             <img
               src={data.data.images.jpg.large_image_url}
               alt={data.data.title}
               width={300}
-              className="object-cover brightness-75"
+              className="w-full object-cover brightness-75 md:w-[300px]"
             />
           )}
         </div>
         <div className="flex grow flex-col gap-6">
           <hgroup className="flex flex-col gap-2">
-            <div className="flex flex-row items-center justify-between gap-6">
-              <div className="flex flex-row items-center gap-6">
+            <div className="flex flex-row flex-wrap items-center justify-between gap-x-6">
+              <div className="flex flex-row flex-wrap items-center gap-x-6">
                 {isLoading || !data?.data ? (
                   <div className="h-9 w-[280px] animate-pulse rounded-sm bg-neutral-500 dark:bg-neutral-300"></div>
                 ) : (
@@ -66,7 +66,7 @@ export default function DetailPage() {
                   {data?.data.type ?? 'XXX'}
                 </Badge>
               </div>
-              <div className="flex flex-row items-center gap-6">
+              <div className="flex flex-row flex-wrap items-center gap-x-6">
                 {isLoading || !data?.data ? (
                   <div className="h-7 w-[40px] animate-pulse rounded-sm bg-neutral-500 dark:bg-neutral-300"></div>
                 ) : (
@@ -104,7 +104,7 @@ export default function DetailPage() {
             </div>
           </hgroup>
           <div className="flex flex-col gap-2">
-            <div className="flex flex-row items-center justify-between">
+            <div className="flex flex-row flex-wrap items-center justify-between">
               <h5 className="text-2xl font-medium tracking-tight">Synopsis</h5>
               <div className="flex flex-row items-center gap-2">
                 {isLoading || !data?.data
