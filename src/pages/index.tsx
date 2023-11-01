@@ -84,25 +84,26 @@ export default function HomePage() {
 
   return (
     <div className="flex w-full max-w-5xl grow flex-col gap-2 py-10">
-      <div className="flex flex-row items-center gap-2">
+      <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <GenresCombobox value={genre} onChange={handleGenreChange} />
-        <div className="grow" />
-        <AnimeOrderSelect value={orderBy} onChange={handleOrderByChange} />
-        <Button
-          onClick={handleOrderDirectionChange}
-          size="sm"
-          variant="outline"
-          className="h-10 w-10"
-        >
-          <div
-            className="transition-transform"
-            style={{
-              transform: `rotate(${orderDirection === OrderDirection.asc ? 0 : 180}deg)`,
-            }}
+        <div className="flex flex-row items-center gap-2">
+          <AnimeOrderSelect value={orderBy} onChange={handleOrderByChange} />
+          <Button
+            onClick={handleOrderDirectionChange}
+            size="sm"
+            variant="outline"
+            className="h-10 w-10"
           >
-            <ChevronDown />
-          </div>
-        </Button>
+            <div
+              className="transition-transform"
+              style={{
+                transform: `rotate(${orderDirection === OrderDirection.asc ? 0 : 180}deg)`,
+              }}
+            >
+              <ChevronDown />
+            </div>
+          </Button>
+        </div>
       </div>
       {animes.error ? (
         <div className="flex grow items-center justify-center">

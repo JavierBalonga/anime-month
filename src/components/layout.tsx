@@ -9,15 +9,14 @@ export default function Layout() {
   const { theme, setTheme } = useTheme();
   return (
     <>
-      <header className="flex-rowitems-center relative flex w-full max-w-5xl justify-between py-2">
-        <h1 className="text-2xl font-extrabold">Anime Month</h1>
-        <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <header className="flex w-full max-w-5xl flex-row items-center justify-between py-2">
+        <Button variant="link" asChild>
+          <Link to="/">
+            <h1 className="text-2xl font-extrabold text-secondary-foreground">Anime Month</h1>
+          </Link>
+        </Button>
+        <nav>
           <ul className="flex flex-row gap-3">
-            <li>
-              <Button variant="link" asChild>
-                <Link to="/">Home</Link>
-              </Button>
-            </li>
             <li>
               <Button variant="link" asChild>
                 <Link to="/favorites">Favorites</Link>

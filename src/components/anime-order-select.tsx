@@ -17,7 +17,7 @@ export interface AnimeOrderSelectProps {
 export function AnimeOrderSelect({ value, onChange }: AnimeOrderSelectProps) {
   return (
     <Select value={value || ''} onValueChange={onChange} required={false}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-full min-w-[180px] grow">
         <SelectValue placeholder="Order by" />
       </SelectTrigger>
       <SelectContent>

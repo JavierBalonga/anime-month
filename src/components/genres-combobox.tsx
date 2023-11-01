@@ -38,7 +38,7 @@ export function GenresCombobox({ value: propsValue, onChange }: GenresComboboxPr
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-[200px] justify-between"
+          className="min-w-[225px] justify-between"
         >
           {value
             ? animeGenres.data?.data.find((genre) => genre.mal_id === value)?.name
