@@ -75,7 +75,7 @@
     min-height: 100svh;
   }
   #root {
-    @apply flex grow flex-col items-center px-10 relative;
+    @apply relative flex grow flex-col items-center px-10;
   }
 
   /* Scrollbars */

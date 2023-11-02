@@ -27,11 +27,12 @@ export default function useCopyElementImage() {
       if (blob) navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
     } catch (error) {
       setError(error as Error);
+      throw error;
+    } finally {
+      parent.removeChild(clone);
+      parent.classList.remove('relative');
+      setLoading(false);
     }
-
-    parent.removeChild(clone);
-    parent.classList.remove('relative');
-    setLoading(false);
   }, []);
 
   return [copyElementImage, { loading, error }] as const;

@@ -44,13 +44,20 @@ export default function FavoritesPage() {
   };
 
   const handleCopy = () => {
-    copyElementImage(ref.current).then(() => {
-      toast({
-        title: 'Successfully copied!',
-        description:
-          'The list was copied as image to your clipboard, You can paste it anywhere now!',
+    copyElementImage(ref.current)
+      .then(() => {
+        toast({
+          title: 'Successfully copied!',
+          description:
+            'The list was copied as image to your clipboard, You can paste it anywhere now!',
+        });
+      })
+      .catch((error: Error) => {
+        toast({
+          title: 'Failed to copy!',
+          description: error.message,
+        });
       });
-    });
   };
 
   return (
