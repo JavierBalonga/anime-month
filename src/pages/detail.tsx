@@ -1,6 +1,7 @@
-import { useMemo } from 'react';
+import { MouseEvent, useMemo } from 'react';
 import { getAnimeById } from '@/services/jikan-api';
-import { AlertCircle } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@radix-ui/react-tooltip';
+import { AlertCircle, StarIcon } from 'lucide-react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 
@@ -8,12 +9,24 @@ import ScreenIcon from '../components/icons/screen';
 import Rating from '../components/rating';
 import { Alert, AlertDescription, AlertTitle } from '../components/ui/alert';
 import { Badge } from '../components/ui/badge';
+import { Button } from '../components/ui/button';
 import YoutubeVideo from '../components/youtube-video';
+import useFavorites from '../contexts/favorites';
 import round from '../lib/round';
+import { cn } from '../lib/utils';
 import { Status } from '../services/jikan-api/types';
 
 export default function DetailPage() {
   const { id } = useParams<{ id: string }>();
+
+  const favorites = useFavorites((s) => s.favorites);
+  const addFavorite = useFavorites((s) => s.addFavorite);
+  const removeFavorite = useFavorites((s) => s.removeFavorite);
+
+  const isFavorite = useMemo(() => {
+    if (!id) return false;
+    return favorites.includes(Number(id));
+  }, [favorites, id]);
 
   const { data, isLoading, error } = useQuery({
     queryKey: ['/anime', id],
@@ -23,6 +36,17 @@ export default function DetailPage() {
   const score = useMemo(() => {
     return round((data?.data.score ?? 0) / 2, 2);
   }, [data?.data.score]);
+
+  const handleToggleFavorite = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (!id) return;
+    const numberId = Number(id);
+    if (isFavorite) {
+      removeFavorite(numberId);
+    } else {
+      addFavorite(numberId);
+    }
+  };
 
   if (error) {
     return (
@@ -54,9 +78,9 @@ export default function DetailPage() {
           )}
         </div>
         <div className="flex grow flex-col gap-6">
-          <hgroup className="flex flex-col gap-2">
-            <div className="flex flex-row flex-wrap items-center justify-between gap-x-6">
-              <div className="flex flex-row flex-wrap items-center gap-x-6">
+          <hgroup className="flex flex-col gap-x-2 gap-y-4">
+            <div className="flex flex-row flex-wrap items-center justify-between gap-x-6 gap-y-4">
+              <div className="flex flex-row flex-wrap items-center gap-x-6 gap-y-4">
                 {isLoading || !data?.data ? (
                   <div className="h-9 w-[280px] animate-pulse rounded-sm bg-neutral-500 dark:bg-neutral-300"></div>
                 ) : (
@@ -66,7 +90,7 @@ export default function DetailPage() {
                   {data?.data.type ?? 'XXX'}
                 </Badge>
               </div>
-              <div className="flex flex-row flex-wrap items-center gap-x-6">
+              <div className="flex flex-row flex-wrap items-center gap-x-6  gap-y-4">
                 {isLoading || !data?.data ? (
                   <div className="h-7 w-[40px] animate-pulse rounded-sm bg-neutral-500 dark:bg-neutral-300"></div>
                 ) : (
@@ -94,13 +118,39 @@ export default function DetailPage() {
                 </Badge>
               </div>
             </div>
-            <div className="flex flex-row items-center gap-2">
-              <Badge variant={isLoading || !data?.data ? 'loading' : 'secondary'}>
-                {data?.data.title_english ?? 'XXXXXXXXXXXXXXXXXXXXX'}
-              </Badge>
-              <Badge variant={isLoading || !data?.data ? 'loading' : 'secondary'}>
-                {data?.data.title_japanese ?? 'XXXXXXXXXXXXXXXXXXXXX'}
-              </Badge>
+            <div className="flex flex-row flex-wrap items-center justify-between gap-x-6 gap-y-4">
+              <div className="flex flex-row items-center gap-2">
+                <Badge variant={isLoading || !data?.data ? 'loading' : 'secondary'}>
+                  {data?.data.title_english ?? 'XXXXXXXXXXXXXXXXXXXXX'}
+                </Badge>
+                <Badge variant={isLoading || !data?.data ? 'loading' : 'secondary'}>
+                  {data?.data.title_japanese ?? 'XXXXXXXXXXXXXXXXXXXXX'}
+                </Badge>
+              </div>
+
+              <Tooltip>
+                <TooltipTrigger>
+                  <Button
+                    className="h-fit rounded-full p-0"
+                    variant="ghost"
+                    onClick={handleToggleFavorite}
+                  >
+                    <Badge
+                      variant="secondary"
+                      className={cn(
+                        'flex gap-2 px-3 py-1 text-lg font-semibold',
+                        isFavorite && 'bg-yellow-500 text-black hover:bg-yellow-300',
+                      )}
+                    >
+                      <span>Favorite</span>
+                      <StarIcon />
+                    </Badge>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{isFavorite ? 'Remove from favorites' : 'Add to favorites'}</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
           </hgroup>
           <div className="flex flex-col gap-2">

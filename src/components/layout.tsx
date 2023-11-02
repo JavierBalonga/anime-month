@@ -4,6 +4,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { useTheme } from '../contexts/theme-provider';
 import Background from './background';
 import { Button } from './ui/button';
+import { Toaster } from './ui/toaster';
 
 export default function Layout() {
   const { theme, setTheme } = useTheme();
@@ -62,6 +63,7 @@ export default function Layout() {
       </header>
       <Outlet />
       <Background />
+      <Toaster />
     </>
   );
 }

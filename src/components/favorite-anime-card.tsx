@@ -77,7 +77,7 @@ export default function FavoriteAnimeCard({ id, onDragStart, onDragOver }: Favor
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Link to={`/${id}`}>
-                      <h4 className="line-clamp-1 text-xl font-medium tracking-tight lg:text-3xl">
+                      <h4 className="line-clamp-1 text-xl font-medium tracking-tight decoration-primary underline-offset-4 hover:underline lg:text-3xl">
                         {data.data.title}
                       </h4>
                     </Link>
